@@ -1,63 +1,51 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
 
-import SideBarView from './views/sideBar';
-
-var SideBar = require('./views/sideBar/');
+const Sidebar = require('./views/sidebar/');
+const Panel = require('./views/panel/');
 
 export default Backbone.Router.extend({
 
 	routes: {
-		'': 'dashboard',
-		'about': 'about'
+		'': 'home'
 	},
 
 	initialize() {
-		$('body').append('<div id="js-app"></div>');
+		$('body').append('<div class="row" id="js-app"></div>');
 	},
 
-	dashboard() {
-    /*var collection = new Backbone.Collection([
-      {text: 'Some Text', url: '/items/1'},
-      {text: 'Some other text', url: '/items/4'}
-    ]);
+	home() {
+	    const sidebar = new Sidebar();
+	    const panel = new Panel();
 
-    var view = new SideBar({
-      collection: collection
-    });
-    $('#js-app').empty().append(view.render().el);*/
+	    $('#js-app')
+	    	.empty()
+	    	.append(sidebar.render().el)
+	    	.append(panel.render().el);
 
-    var view = new SideBar();
-    $('#js-app').empty().append(view.render().el);
-    view.collection.add({
-    	caption: 'Some Caption',
-    	path: 'somePath'
-    });
-    view.collection.add({
-    	caption: 'Some Caption1',
-    	path: 'somePath1'
-    });
-    view.collection.add({
-    	caption: 'Some Caption1',
-    	path: 'somePath1'
-    });
-    view.collection.add({
-    	caption: 'Some Caption1',
-    	path: 'somePath1'
-    });
-    view.collection.add({
-    	caption: 'Some Caption1',
-    	path: 'somePath1'
-    });
-  }/*,
-
-  about() {
-    console.log('here1');
-    var helloView = new SideBarView({
-      template: _.template('Im the about page')
-    }).render();
-
-    $('#js-app').empty().append(helloView.$el);
-}*/
-
+	    sidebar.collection.add({
+	    	caption: 'Some Caption',
+	    	path: 'somePath'
+	    });
+	    sidebar.collection.add({
+	    	caption: 'Some Caption1',
+	    	path: 'somePath1'
+	    });
+	    sidebar.collection.add({
+	    	caption: 'Some Caption1',
+	    	path: 'somePath1'
+	    });
+	    sidebar.collection.add({
+	    	caption: 'Some Caption1',
+	    	path: 'somePath1'
+	    });
+	    sidebar.collection.add({
+	    	caption: 'Some Caption1',
+	    	path: 'somePath1'
+	    });
+	    panel.collection.add({
+	    	caption: 'Some Caption',
+	    	path: 'somePath'
+	    });
+ 	}
 });
