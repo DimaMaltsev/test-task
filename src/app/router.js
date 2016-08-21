@@ -19,8 +19,11 @@ export default Backbone.Router.extend({
 
 		this.sidebar = new Sidebar();
 	    this.panel = new Panel();
-	    
+
 	    this.sidebar.setData(data);
+	    this.panel.setData(data);
+
+	    this.currentCategoryPath = '';
 
 	    $('#js-app')
 	    	.empty()
@@ -28,30 +31,45 @@ export default Backbone.Router.extend({
 	    	.append(this.panel.render().el);
 
 	    this.sidebar.on('categoryChange', (path) => {
-	    	this.navigateCategory(path);
+	    	this._navigateCategory(path);
 	    });
 
+	    this.panel.on('subCategoryChange', (subcategoryPath) => {
+	    	this._navigateSubCategory(subcategoryPath);
+	    });
 	},
 
 	home() {
 	    const initialCategory = 'products';
 
-	    this.navigateCategory(initialCategory);
+	    this._navigateCategory(initialCategory);
  	},
 
- 	setCategory(categoryName, subCategoryName) {
- 		const categoryFound = this.sidebar.enableCategory(categoryName);
+ 	setCategory(categoryPath, subCategoryPath) {
+ 		const categoryFound = this.sidebar.enableCategory(categoryPath);
+ 		this.currentCategoryPath = categoryPath;
 
  		if(!categoryFound) {
  			this.home();
+ 			return;
  		}
 
- 		// this.panel.enableSubCategory(subCategoryName);
+ 		this.panel.enableCategory(categoryPath);
+ 		this.panel.enableSubCategory(subCategoryPath);
  	},
 
- 	navigateCategory(categoryPath) {
+ 	_navigateCategory(categoryPath) {
 	    const initialSubCategory = 'general';
+	    this.currentCategoryPath = categoryPath;
 
- 		this.navigate('main/' + categoryPath + '/' + initialSubCategory, {trigger: true});
+ 		this._navigate(categoryPath, initialSubCategory);
+ 	},
+
+ 	_navigateSubCategory(subCategoryPath) {
+ 		this._navigate(this.currentCategoryPath , subCategoryPath);
+ 	},
+
+ 	_navigate(categoryPath, subCategoryPath) {
+ 		this.navigate('main/' + categoryPath + '/' + subCategoryPath, {trigger: true});
  	}
 });

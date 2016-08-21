@@ -1,3 +1,3 @@
-import SidebarListView from './view';
+import PanelView from './view';
 
-module.exports = SidebarListView;
+module.exports = PanelView;

@@ -3,76 +3,76 @@
 		"categoryName": "Products",
 		"categoryPath": "products",
 		"general": {
-			"shipping": "some shipping info for products",
-			"billing": "some billing info for products",
-			"home": "some home info for products"
+			"shipping": "some shipping info for products general",
+			"billing": "some billing info for products general",
+			"home": "some home info for products general"
 		},
 		"addresses": {
-			"shipping": "some shipping info for products",
-			"billing": "some billing info for products",
-			"home": "some home info for products"
+			"shipping": "some shipping info for products addresses",
+			"billing": "some billing info for products addresses",
+			"home": "some home info for products addresses"
 		},
 		"orders": {
-			"shipping": "some shipping info for products",
-			"billing": "some billing info for products",
-			"home": "some home info for products"
+			"shipping": "some shipping info for products orders",
+			"billing": "some billing info for products orders",
+			"home": "some home info for products orders"
 		}
 	},
 	{
 		"categoryName": "Customers",
 		"categoryPath": "customers",
 		"general": {
-			"shipping": "some shipping info for customers",
-			"billing": "some billing info for customers",
-			"home": "some home info for customers"
+			"shipping": "some shipping info for customers general",
+			"billing": "some billing info for customers general",
+			"home": "some home info for customers general"
 		},
 		"addresses": {
-			"shipping": "some shipping info for customers",
-			"billing": "some billing info for customers",
-			"home": "some home info for customers"
+			"shipping": "some shipping info for customers addresses",
+			"billing": "some billing info for customers addresses",
+			"home": "some home info for customers addresses"
 		},
 		"orders": {
-			"shipping": "some shipping info for customers",
-			"billing": "some billing info for customers",
-			"home": "some home info for customers"
+			"shipping": "some shipping info for customers orders",
+			"billing": "some billing info for customers orders",
+			"home": "some home info for customers orders"
 		}
 	},
 	{
 		"categoryName": "Orders",
 		"categoryPath": "orders",
 		"general": {
-			"shipping": "some shipping info for orders",
-			"billing": "some billing info for orders",
-			"home": "some home info for orders"
+			"shipping": "some shipping info for orders gneral",
+			"billing": "some billing info for orders gneral",
+			"home": "some home info for orders gneral"
 		},
 		"addresses": {
-			"shipping": "some shipping info for orders",
-			"billing": "some billing info for orders",
-			"home": "some home info for orders"
+			"shipping": "some shipping info for orders addresses",
+			"billing": "some billing info for orders addresses",
+			"home": "some home info for orders addresses"
 		},
 		"orders": {
-			"shipping": "some shipping info for orders",
-			"billing": "some billing info for orders",
-			"home": "some home info for orders"
+			"shipping": "some shipping info for orders orders",
+			"billing": "some billing info for orders orders",
+			"home": "some home info for orders orders"
 		}
 	},
 	{
 		"categoryName": "News",
 		"categoryPath": "news",
 		"general": {
-			"shipping": "some shipping info for news",
-			"billing": "some billing info for news",
-			"home": "some home info for news"
+			"shipping": "some shipping info for news general",
+			"billing": "some billing info for news general",
+			"home": "some home info for news general"
 		},
 		"addresses": {
-			"shipping": "some shipping info for news",
-			"billing": "some billing info for news",
-			"home": "some home info for news"
+			"shipping": "some shipping info for news addresses",
+			"billing": "some billing info for news addresses",
+			"home": "some home info for news addresses"
 		},
 		"orders": {
-			"shipping": "some shipping info for news",
-			"billing": "some billing info for news",
-			"home": "some home info for news"
+			"shipping": "some shipping info for news orders",
+			"billing": "some billing info for news orders",
+			"home": "some home info for news orders"
 		}
 	}
 ]
