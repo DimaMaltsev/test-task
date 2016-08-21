@@ -3,8 +3,8 @@ import Backbone from 'backbone';
 
 import data from 'json!./data.json';
 
-const Sidebar = require('./views/sidebar/');
-const Panel = require('./views/panel/');
+const Sidebar = require('./components/sidebar/');
+const Panel = require('./components/panel/');
 
 export default Backbone.Router.extend({
 
@@ -47,13 +47,13 @@ export default Backbone.Router.extend({
 
  	setCategory(categoryPath, subCategoryPath) {
  		const categoryFound = this.sidebar.enableCategory(categoryPath);
- 		this.currentCategoryPath = categoryPath;
 
  		if(!categoryFound) {
  			this.home();
  			return;
  		}
 
+ 		this.currentCategoryPath = categoryPath;
  		this.panel.enableCategory(categoryPath);
  		this.panel.enableSubCategory(subCategoryPath);
  	},

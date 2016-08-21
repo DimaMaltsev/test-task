@@ -8,7 +8,7 @@ const panelTemplateHTML = require('./tpl.html');
 
 const SidebarListView = Backbone.View.extend({
 	initialize() {
-		_.bindAll(this, 'render', 'appendItem');
+		_.bindAll(this, 'render', '_appendItem');
 
 		this.collection = new SidebarListModel();
 	},
@@ -16,51 +16,44 @@ const SidebarListView = Backbone.View.extend({
 	render() {
 		$(this.el).append(panelTemplateHTML);
 
-		this.collection.each(function(itemModel){
-			this.appendItem(itemModel)
-		}.bind(this));
+		this.collection.each((itemModel) => this._appendItem(itemModel));
 
 		return this;
 	},
 
 	setData(data) {
-		_.each(data, function(dataEntry) {
-			const caption = dataEntry.categoryName;
-			const path = dataEntry.categoryPath;
-			const active = false;
-
-			this.collection.add({
-				caption,
-				path,
-				active
-			});
-		}.bind(this));
-	},
-
-	appendItem(item) {
-		const itemView = new SidebarItemView({
-			model: item
+		data.forEach((dataEntry) => {
+			const item = {
+				caption: dataEntry.categoryName,
+				path: dataEntry.categoryPath,
+				active: false
+			}
+			
+			this.collection.add(item);
 		});
-
-		itemView.onClick = this.onItemClick.bind(this);
-
-		$('ul', this.el).append(itemView.el);
-	},
-
-	onItemClick(item) {
-		this._changeCategory(item);
 	},
 
 	enableCategory(path) {
-		return this.collection.some(function(itemModel){
+		return this.collection.some((itemModel) => {
 			const itemPath = itemModel.get('path');
 
 			if(path === itemPath) {
 				this._enableItem(itemModel);
 				return true;
 			}
-		}.bind(this));
+		});
 	},
+
+	_appendItem(item) {
+		const itemView = new SidebarItemView({
+			model: item
+		});
+
+		itemView.onClick = (item) => this._changeCategory(item);
+
+		$('ul', this.el).append(itemView.el);
+	},
+
 
 	_changeCategory(categoryItem) {
 		const path = categoryItem.model.get('path');
@@ -75,9 +68,7 @@ const SidebarListView = Backbone.View.extend({
 	},
 
 	_disableAll() {
-		this.collection.each(function(itemModel){
-			this._updateItemActivity(itemModel, false);
-		}, this);
+		this.collection.each((itemModel) => this._updateItemActivity(itemModel, false));
 	},
 
 	_updateItemActivity(itemModel, isActive) {

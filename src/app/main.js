@@ -1,7 +1,7 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
 
-import Router from './router';
+import App from './app';
 
-const router = new Router();
+const app = new App();
 Backbone.history.start();

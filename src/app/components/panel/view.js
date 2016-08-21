@@ -6,13 +6,13 @@ const addressesTabContentTemplateHTML = require('./tab-content-templates/address
 const ordersTabContentTemplateHTML = require('./tab-content-templates/orders.tpl.html');
 
 const PanelView = Backbone.View.extend({
-	initialize: function() {
+	initialize() {
 		_.bindAll(this, 'render');
 
 		this.data = {};
 	},
 
-	render: function() {
+	render() {
 		$(this.el).append(panelTemplateHTML);
 		$(this.el, 'a').click(function(event){
 			if(!this._isValidClick(event)) {
@@ -48,7 +48,7 @@ const PanelView = Backbone.View.extend({
 	setData(data) {
 		const result = {};
 
-		data.forEach(function(dataEntry) {
+		data.forEach((dataEntry) => {
 			result[dataEntry.categoryPath] = {
 				addresses: dataEntry.addresses,
 				general: dataEntry.general,

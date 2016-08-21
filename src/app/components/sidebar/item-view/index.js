@@ -3,25 +3,25 @@ import _ from 'lodash';
 const itemTemplateHTML = require('./item.tpl.html');
 
 const SidebarItemView = Backbone.View.extend({
-	initialize: function () {
+	initialize() {
 		_.bindAll(this, 'render');
 		this.model.on('change', this._updateElementClass.bind(this));
 		this.render();
 	},
 
-	render: function () {
+	render() {
 		this._createElement();
 		this._subscribeClickEvent();
 
 		return this;
 	},
 
-	_updateElementClass: function() {
+	_updateElementClass() {
 		const active = this.model.get('active') ? 'active' : '';
 		$(this.el).attr('class', 'list-group-item ' + active);
 	},
 
-	_createElement: function() {
+	_createElement() {
 		const caption = this.model.get('caption');
 		const active = this.model.get('active') ? 'active' : '';
 
@@ -33,10 +33,8 @@ const SidebarItemView = Backbone.View.extend({
 		this.setElement(compiledTemplate);
 	},
 
-	_subscribeClickEvent: function() {
-		$(this.el).click(function(){
-			this.onClick(this);
-		}.bind(this));
+	_subscribeClickEvent() {
+		$(this.el).click(() => this.onClick(this));
 	}
 });
 
