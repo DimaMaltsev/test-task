@@ -1,6 +1,8 @@
 import $ from 'jquery';
 import Backbone from 'backbone';
 
+import data from 'json!./data.json';
+
 const Sidebar = require('./views/sidebar/');
 const Panel = require('./views/panel/');
 
@@ -17,6 +19,8 @@ export default Backbone.Router.extend({
 
 		this.sidebar = new Sidebar();
 	    this.panel = new Panel();
+	    
+	    this.sidebar.setData(data);
 
 	    $('#js-app')
 	    	.empty()
@@ -26,6 +30,7 @@ export default Backbone.Router.extend({
 	    this.sidebar.on('categoryChange', (path) => {
 	    	this.navigateCategory(path);
 	    });
+
 	},
 
 	home() {
@@ -40,6 +45,8 @@ export default Backbone.Router.extend({
  		if(!categoryFound) {
  			this.home();
  		}
+
+ 		// this.panel.enableSubCategory(subCategoryName);
  	},
 
  	navigateCategory(categoryPath) {

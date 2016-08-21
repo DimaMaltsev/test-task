@@ -1,0 +1,78 @@
+[
+	{
+		"categoryName": "Products",
+		"categoryPath": "products",
+		"general": {
+			"shipping": "some shipping info for products",
+			"billing": "some billing info for products",
+			"home": "some home info for products"
+		},
+		"addresses": {
+			"shipping": "some shipping info for products",
+			"billing": "some billing info for products",
+			"home": "some home info for products"
+		},
+		"orders": {
+			"shipping": "some shipping info for products",
+			"billing": "some billing info for products",
+			"home": "some home info for products"
+		}
+	},
+	{
+		"categoryName": "Customers",
+		"categoryPath": "customers",
+		"general": {
+			"shipping": "some shipping info for customers",
+			"billing": "some billing info for customers",
+			"home": "some home info for customers"
+		},
+		"addresses": {
+			"shipping": "some shipping info for customers",
+			"billing": "some billing info for customers",
+			"home": "some home info for customers"
+		},
+		"orders": {
+			"shipping": "some shipping info for customers",
+			"billing": "some billing info for customers",
+			"home": "some home info for customers"
+		}
+	},
+	{
+		"categoryName": "Orders",
+		"categoryPath": "orders",
+		"general": {
+			"shipping": "some shipping info for orders",
+			"billing": "some billing info for orders",
+			"home": "some home info for orders"
+		},
+		"addresses": {
+			"shipping": "some shipping info for orders",
+			"billing": "some billing info for orders",
+			"home": "some home info for orders"
+		},
+		"orders": {
+			"shipping": "some shipping info for orders",
+			"billing": "some billing info for orders",
+			"home": "some home info for orders"
+		}
+	},
+	{
+		"categoryName": "News",
+		"categoryPath": "news",
+		"general": {
+			"shipping": "some shipping info for news",
+			"billing": "some billing info for news",
+			"home": "some home info for news"
+		},
+		"addresses": {
+			"shipping": "some shipping info for news",
+			"billing": "some billing info for news",
+			"home": "some home info for news"
+		},
+		"orders": {
+			"shipping": "some shipping info for news",
+			"billing": "some billing info for news",
+			"home": "some home info for news"
+		}
+	}
+]

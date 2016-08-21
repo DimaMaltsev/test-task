@@ -23,6 +23,20 @@ const SidebarListView = Backbone.View.extend({
 		return this;
 	},
 
+	setData(data) {
+		_.each(data, function(dataEntry) {
+			const caption = dataEntry.categoryName;
+			const path = dataEntry.categoryPath;
+			const active = false;
+
+			this.collection.add({
+				caption,
+				path,
+				active
+			});
+		}.bind(this));
+	},
+
 	appendItem(item) {
 		const itemView = new SidebarItemView({
 			model: item
