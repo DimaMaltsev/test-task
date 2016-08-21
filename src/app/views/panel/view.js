@@ -1,9 +1,9 @@
 import _ from 'lodash';
 
 const panelTemplateHTML = require('./tpl.html');
-const generalTabContentTemplateHTML = require('./general-tab-content.tpl.html');
-const addressesTabContentTemplateHTML = require('./addresses-tab-content.tpl.html');
-const ordersTabContentTemplateHTML = require('./orders-tab-content.tpl.html');
+const generalTabContentTemplateHTML = require('./tab-content-templates/general.tpl.html');
+const addressesTabContentTemplateHTML = require('./tab-content-templates/addresses.tpl.html');
+const ordersTabContentTemplateHTML = require('./tab-content-templates/orders.tpl.html');
 
 const PanelView = Backbone.View.extend({
 	initialize: function() {
