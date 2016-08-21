@@ -7,13 +7,13 @@ import SidebarItemView from './item-view/';
 const panelTemplateHTML = require('./tpl.html');
 
 const SidebarListView = Backbone.View.extend({
-	initialize: function() {
+	initialize() {
 		_.bindAll(this, 'render', 'appendItem');
 
 		this.collection = new SidebarListModel();
 	},
 
-	render: function() {
+	render() {
 		$(this.el).append(panelTemplateHTML);
 
 		this.collection.each(function(itemModel){
@@ -23,7 +23,7 @@ const SidebarListView = Backbone.View.extend({
 		return this;
 	},
 
-	appendItem: function(item) {
+	appendItem(item) {
 		const itemView = new SidebarItemView({
 			model: item
 		});
@@ -33,11 +33,11 @@ const SidebarListView = Backbone.View.extend({
 		$('ul', this.el).append(itemView.el);
 	},
 
-	onItemClick: function (item) {
+	onItemClick(item) {
 		this._changeCategory(item);
 	},
 
-	enableCategory: function(path) {
+	enableCategory(path) {
 		return this.collection.some(function(itemModel){
 			const itemPath = itemModel.get('path');
 
@@ -48,27 +48,26 @@ const SidebarListView = Backbone.View.extend({
 		}.bind(this));
 	},
 
-	_changeCategory: function(categoryItem) {
+	_changeCategory(categoryItem) {
 		const path = categoryItem.model.get('path');
 
 		this.trigger('categoryChange', path);
-		//window.history.pushState('object or string', 'Title', '#/' + path + '/general');
 	},
 
-	_enableItem: function(itemModel) {
+	_enableItem(itemModel) {
 		this._disableAll();
 
-		itemModel.set({
-			'active': true
-		});
+		this._updateItemActivity(itemModel, true);
 	},
 
-	_disableAll: function() {
+	_disableAll() {
 		this.collection.each(function(itemModel){
-			itemModel.set({
-				'active': false
-			});
+			this._updateItemActivity(itemModel, false);
 		}, this);
+	},
+
+	_updateItemActivity(itemModel, isActive) {
+		itemModel.set({ 'active': isActive });
 	}
 });
 
