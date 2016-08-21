@@ -6,46 +6,45 @@ const Panel = require('./views/panel/');
 
 export default Backbone.Router.extend({
 
-	routes: {
-		'': 'home'
+	routes: {          
+		'': 'home',
+		'main/:categoryName/:subCategoryName': 'setCategory',
+		'*other': 'home'
 	},
 
 	initialize() {
 		$('body').append('<div class="row" id="js-app"></div>');
-	},
 
-	home() {
-	    const sidebar = new Sidebar();
-	    const panel = new Panel();
+		this.sidebar = new Sidebar();
+	    this.panel = new Panel();
 
 	    $('#js-app')
 	    	.empty()
-	    	.append(sidebar.render().el)
-	    	.append(panel.render().el);
+	    	.append(this.sidebar.render().el)
+	    	.append(this.panel.render().el);
 
-	    sidebar.collection.add({
-	    	caption: 'Some Caption',
-	    	path: 'somePath'
+	    this.sidebar.on('categoryChange', (path) => {
+	    	this.navigateCategory(path);
 	    });
-	    sidebar.collection.add({
-	    	caption: 'Some Caption1',
-	    	path: 'somePath1'
-	    });
-	    sidebar.collection.add({
-	    	caption: 'Some Caption1',
-	    	path: 'somePath1'
-	    });
-	    sidebar.collection.add({
-	    	caption: 'Some Caption1',
-	    	path: 'somePath1'
-	    });
-	    sidebar.collection.add({
-	    	caption: 'Some Caption1',
-	    	path: 'somePath1'
-	    });
-	    panel.collection.add({
-	    	caption: 'Some Caption',
-	    	path: 'somePath'
-	    });
+	},
+
+	home() {
+	    const initialCategory = 'products';
+
+	    this.navigateCategory(initialCategory);
+ 	},
+
+ 	setCategory(categoryName, subCategoryName) {
+ 		const categoryFound = this.sidebar.enableCategory(categoryName);
+
+ 		if(!categoryFound) {
+ 			this.home();
+ 		}
+ 	},
+
+ 	navigateCategory(categoryPath) {
+	    const initialSubCategory = 'general';
+
+ 		this.navigate('main/' + categoryPath + '/' + initialSubCategory, {trigger: true});
  	}
 });
